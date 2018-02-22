@@ -1,0 +1,30 @@
+{
+  "name": "violet",
+  "version": "0.0.1",
+  "engines": {
+    "node": "9.5.0"
+  },
+  "description": "A CMS using pure standards technology. Mostly for academic purposes.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js --watch",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenjura/violet.git"
+  },
+  "keywords": [
+    "cms"
+  ],
+  "author": "kenjura",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kenjura/violet/issues"
+  },
+  "homepage": "https://github.com/kenjura/violet#readme",
+  "dependencies": {
+    "dotenv": "^5.0.0",
+    "express": "^4.16.2"
+  }
+}
