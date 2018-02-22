@@ -41,6 +41,7 @@ function getType(ext) {
   switch (ext) {
     case 'js':    return 'application/javascript';
     case 'css':   return 'text/css';
+    case 'ico':   return 'image/x-icon';
     case 'html':  return 'text/html';
     case 'jpeg':  return 'image/jpeg';
     case 'png':   return 'image/png';
