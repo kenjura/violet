@@ -21,10 +21,10 @@ function getFile(base, url_pathname, fallbackPath) {
   const type = getType(ext);
   const pathname = url_pathname === '/' ? 'index.html' : url_pathname;
   const req_path = path.join(base, pathname);
-  const fallback_path = path.join(base, fallbackPath);
+  const fallback_path = fallbackPath ? path.join(base, fallbackPath) : null;
   const content = fs.existsSync(req_path)
     ? fs.readFileSync(req_path, { encoding:'UTF-8' })
-    : fs.readFileSync(fallback_path, { encoding:'UTF-8' });
+    : (fallbackPath ? fs.readFileSync(fallback_path, { encoding:'UTF-8' }) : '');
   return {
     content,
     type,

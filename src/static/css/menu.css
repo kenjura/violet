@@ -1,0 +1,58 @@
+.menu {
+  white-space: nowrap;
+}
+
+.menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.menu a {
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-decoration: none;
+}
+
+.menu > ul > li:first-of-type > a {
+  padding-left: 0;
+}
+
+.menu a:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.menu ul ul {
+  background-color: #123456;
+  display: none;
+}
+
+.menu li li {
+  display: block;
+}
+
+.menu li:hover > ul {
+  display: block;
+}
+
+.menu li > ul {
+  left: 0;
+  position: absolute;
+  top: 100%;
+}
+.menu ul ul ul {
+  background: #3f4a55;
+  left: 100%;
+  top: 0;
+}

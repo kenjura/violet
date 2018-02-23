@@ -1,41 +1,27 @@
-import Article    from './model/Article';
-import articleView from './view/article';
-import dotenv     from 'dotenv';
-import express    from 'express';
-import path       from 'path';
+import Article from './Article.js';
 
-const app = express();
+class State {
+  constructor() {
+    // const server = window.server || {};
+    // this.article = new Article(server.article);
+    // this.menu = server.menu;
+    // this.toc = server.toc;
+    this.article = getDefaultArticle();
+    this.menu = getDefaultMenu();
+    this.toc = getDefaultTOC();
+  }
 
-dotenv.load({ path: '.env.local' })
 
-// serve static assets
-app.use(express.static('src/static'));
+}
 
-// serve articles
-app.get('*', (req,res) => {
-  console.log('article serve');
-  const article = Article.load(req.path);
-  res.send(articleView({
-    article: article,
-    server: getDefaultServerVariables()
-  }));
-});
+const state = new State();
+
+export default state;
 
 
 
-app.listen(process.env.PORT, () => console.log(`Listening on port ${process.env.PORT}`));
-
-
-
-function getDefaultServerVariables() {
+function getDefaultMenu() {
   return {
-      article: {
-        body: '<h1>Hello World</h1><p>How are you</p>',
-        source: '# Hello World\n\nHow are you',
-        format: 'markdown',
-        filename: 'fakeArticle.md'
-      },
-      menu: {
         body: `<ul>
           <li>
             <a href="Foo">Foo</a>
@@ -61,8 +47,11 @@ function getDefaultServerVariables() {
             </ul>
           </li>
         </ul>`
-      },
-      toc: {
+      }
+}
+
+function getDefaultTOC() {
+  return {
         body: `<ul>
           <li>
             <a href="#Hello-World">Hello World</a>
@@ -89,21 +78,13 @@ function getDefaultServerVariables() {
           </li>
         </ul>`
       }
-      // menu: [
-      //   { label:'Foo', path:'/foo', children:[
-      //     { label:'Foo 1', path:'/foo1' },
-      //     { label:'Foo 2', path:'/foo2' },
-      //     { label:'Foo 3', path:'/foo3' },
-      //   ]},
-      //   { label:'Bar', path:'/bar', children:[
-      //     { label:'Bar 1', path:'/bar1' },
-      //     { label:'Bar 2', path:'/bar2' },
-      //     { label:'Bar 3', path:'/bar3', children: [
-      //       { label: 'Bar 3a', path:'/bar3a' },
-      //       { label: 'Bar 3b', path:'/bar3b' },
-      //       { label: 'Bar 3c', path:'/bar3c' },
-      //     ]},
-      //   ]},
-      // ]
-    }
+}
+
+function getDefaultArticle() {
+  return {
+        body: '<h1>Hello World</h1><p>How are you</p>',
+        source: '# Hello World\n\nHow are you',
+        format: 'markdown',
+        filename: 'fakeArticle.md'
+      }
 }
