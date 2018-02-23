@@ -34,7 +34,6 @@
 }
 
 .menu ul ul {
-  background-color: #123456;
   display: none;
 }
 
@@ -52,7 +51,6 @@
   top: 100%;
 }
 .menu ul ul ul {
-  background: #3f4a55;
   left: 100%;
   top: 0;
 }

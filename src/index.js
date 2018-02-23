@@ -13,11 +13,14 @@ app.use(express.static('src/static'));
 
 // serve articles
 app.get('*', (req,res) => {
-  console.log('article serve');
-  const article = Article.load(req.path);
+  const article = Article.load(req.path).render();
+  const menu = Article.loadMenu(req.path).render({ noH1:true });
+  const style = Article.loadStyle(req.path);
   res.send(articleView({
-    article: article,
-    server: getDefaultServerVariables()
+    article,
+    menu,
+    style,
+    toc: article.toc,
   }));
 });
 

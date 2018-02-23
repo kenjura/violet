@@ -1,5 +1,3 @@
-import state from '../model/State';
-
 export default function(props) {
   return `<!DOCTYPE html>
     <html lang="en">
@@ -8,21 +6,20 @@ export default function(props) {
       <title>Violet</title>
       <link rel="stylesheet" href="/css/index.css">
       <link rel="stylesheet" href="/css/menu.css">
+      <style>
+      ${props.style.source}
+      </style>
     </head>
 
     <body>
 
-      <nav id="menu" class="menu">${state.menu.body}</nav>
-      <nav id="toc" class="menu">${state.toc.body}</nav>
+      <nav id="menu" class="menu">${props.menu.body}</nav>
+      <nav id="toc" class="menu">${props.toc}</nav>
 
       ${props.children}
 
       <script type="module">
-        /*import State from './State.js';
-
-        document.getElementById('article').innerHTML = State.article.body;
-        document.getElementById('menu').innerHTML = State.menu.body;
-        document.getElementById('toc').innerHTML = State.toc.body;*/
+        window.v = ${JSON.stringify(props)}
       </script>
     </body>
     </html>`
